@@ -1,0 +1,114 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    // Program login
+    string user, pass;
+    bool berhasil_login = false;
+    int max_percobaan = 3;
+
+    cout << "Selamat datang di program konversi mata uang" << endl;
+
+    for (int i = 1; i <= max_percobaan; i++) {
+        cout << "Masukkan nama : ";
+        cin >> user;
+        cout << "Masukkan nim : ";
+        cin >> pass;
+
+        if (user == "aidil" && pass == "042") {
+            cout << "Anda berhasil login" << endl;
+            berhasil_login = true;
+            break;
+        } else {
+            cout << "Username/Password Anda salah" << endl;
+            if (i < max_percobaan) {
+                cout << "Anda memiliki " << max_percobaan - i << " percobaan lagi" << endl;
+            } else {
+                cout << "Anda telah melebihi batas percobaan. Silakan coba lagi nanti." << endl;
+                return 1; // Keluar dari program jika gagal login
+            }
+        }
+    }
+
+    // Jika berhasil login, jalankan program konversi mata uang
+    if (berhasil_login) {
+        const float rupiah_to_dollar = 0.00008;
+        const float rupiah_to_euro = 0.00007;
+        const float rupiah_to_yen = 0.00876;
+        const float dollar_to_rupiah = 12450; // Misalkan 1 Dollar = 12450 Rupiah
+        const float dollar_to_euro = 0.88; // Misalkan 1 Dollar = 0.88 Euro
+        const float dollar_to_yen = 110; // Misalkan 1 Dollar = 110 Yen
+        const float euro_to_rupiah = 14286; // Misalkan 1 Euro = 14286 Rupiah
+        const float euro_to_dollar = 1.14; // Misalkan 1 Euro = 1.14 Dollar
+        const float euro_to_yen = 127.42; // Misalkan 1 Euro = 127.42 Yen
+        const float yen_to_rupiah = 114; // Misalkan 1 Yen = 114 Rupiah
+        const float yen_to_dollar = 0.009; // Misalkan 1 Yen = 0.009 Dollar
+        const float yen_to_euro = 0.008; // Misalkan 1 Yen = 0.008 Euro
+
+        float input_amount;
+        int choice;
+        char lanjut;
+
+        do {
+            cout << "==============================================" << endl;
+            cout << "\tKonversi Mata Uang" << endl;
+            cout << "==============================================" << endl;
+            cout << "1. Konversi Rupiah ke (Dollar, Euro, Yen)" << endl;
+            cout << "2. Konversi Dollar ke (Rupiah, Euro, Yen)" << endl;
+            cout << "3. Konversi Euro ke (Rupiah, Dollar, Yen)" << endl;
+            cout << "4. Konversi Yen ke (Rupiah, Dollar, Euro)" << endl;
+            cout << "5. Keluar" << endl;
+            cout << "==============================================" << endl;
+            cout << endl;
+            cout << "Masukkan pilihan Anda: "; cin >> choice;
+            cout << endl;
+            cout << "==============================================" << endl;
+
+            switch(choice) {
+                case 1:
+                    cout << "1. Konversi Rupiah ke (Dollar, Euro, Yen)" << endl;
+                    cout << "----------------------------------------------" << endl;
+                    cout << "Masukkan nilai rupiah: "; cin >> input_amount;
+                    cout << "Nilai Dollar Amerika: " << input_amount * rupiah_to_dollar << endl;
+                    cout << "Nilai Euro: " << input_amount * rupiah_to_euro << endl;
+                    cout << "Nilai Yen: " << input_amount * rupiah_to_yen << endl;
+                    break;
+                case 2:
+                    cout << "2. Konversi Dollar ke (Rupiah, Euro, Yen)" << endl;
+                    cout << "----------------------------------------------" << endl;
+                    cout << "Masukkan nilai dollar: "; cin >> input_amount;
+                    cout << "Nilai Rupiah: " << input_amount * dollar_to_rupiah << endl;
+                    cout << "Nilai Euro: " << input_amount * dollar_to_euro << endl;
+                    cout << "Nilai Yen: " << input_amount * dollar_to_yen << endl;
+                    break;
+                case 3:
+                    cout << "3. Konversi Euro ke (Rupiah, Dollar, Yen)" << endl;
+                    cout << "----------------------------------------------" << endl;
+                    cout << "Masukkan nilai euro: "; cin >> input_amount;
+                    cout << "Nilai Rupiah: " << input_amount * euro_to_rupiah << endl;
+                    cout << "Nilai Dollar Amerika: " << input_amount * euro_to_dollar << endl;
+                    cout << "Nilai Yen: " << input_amount * euro_to_yen << endl;
+                    break;
+                case 4:
+                    cout << "4. Konversi Yen ke (Rupiah, Dollar, Euro)" << endl;
+                    cout << "----------------------------------------------" << endl;
+                    cout << "Masukkan nilai yen: "; cin >> input_amount;
+                    cout << "Nilai Rupiah: " << input_amount * yen_to_rupiah << endl;
+                    cout << "Nilai Dollar Amerika: " << input_amount * yen_to_dollar << endl;
+                    cout << "Nilai Euro: " << input_amount * yen_to_euro << endl;
+                    break;
+                case 5:
+                    cout << "Terima kasih! Program selesai." << endl;
+                    return 0; // Keluar dari program
+                default:
+                    cout << "Pilihan tidak tersedia" << endl;
+            }
+
+            cout << "Apakah Anda ingin melanjutkan (y/n)? "; cin >> lanjut;
+        } while (lanjut == 'y' || lanjut == 'Y');
+
+        cout << "Terima kasih! Program selesai." << endl;
+    }
+
+    return 0;
+}
